@@ -1,0 +1,5 @@
+/Users/siddharth/Desktop/C++ GoQuant/build/CMakeFiles/MyQtApp.dir
+/Users/siddharth/Desktop/C++ GoQuant/build/CMakeFiles/edit_cache.dir
+/Users/siddharth/Desktop/C++ GoQuant/build/CMakeFiles/rebuild_cache.dir
+/Users/siddharth/Desktop/C++ GoQuant/build/CMakeFiles/MyQtApp_autogen_timestamp_deps.dir
+/Users/siddharth/Desktop/C++ GoQuant/build/CMakeFiles/MyQtApp_autogen.dir
