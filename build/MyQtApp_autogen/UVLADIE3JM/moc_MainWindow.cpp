@@ -43,6 +43,9 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "authenticate",
     "fetchCurrencies",
     "placeOrder",
+    "instrumentName",
+    "amount",
+    "orderType",
     "subscribeToPriceStream",
     "currency",
     "handleWebSocketMessage",
@@ -70,17 +73,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        1,    0,   50,    2, 0x08,    1 /* Private */,
        3,    0,   51,    2, 0x08,    2 /* Private */,
        4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    0,   53,    2, 0x08,    4 /* Private */,
-       6,    1,   54,    2, 0x08,    5 /* Private */,
-       8,    1,   57,    2, 0x08,    7 /* Private */,
+       5,    3,   53,    2, 0x08,    4 /* Private */,
+       9,    1,   60,    2, 0x08,    8 /* Private */,
+      11,    1,   63,    2, 0x08,   10 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    7,
-    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::QString,    6,    7,    8,
+    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::QString,   12,
 
        0        // eod
 };
@@ -102,6 +105,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'placeOrder'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'subscribeToPriceStream'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
@@ -121,7 +127,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->setupUI(); break;
         case 1: _t->authenticate(); break;
         case 2: _t->fetchCurrencies(); break;
-        case 3: _t->placeOrder(); break;
+        case 3: _t->placeOrder((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
         case 4: _t->subscribeToPriceStream((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 5: _t->handleWebSocketMessage((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;

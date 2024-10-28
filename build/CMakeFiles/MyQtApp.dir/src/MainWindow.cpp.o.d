@@ -1214,5 +1214,8 @@ CMakeFiles/MyQtApp.dir/src/MainWindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/qabstractscrollarea.h \
   /opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
   /opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
-  /opt/homebrew/lib/QtCore.framework/Headers/QDebug \
-  /opt/homebrew/lib/QtCore.framework/Headers/qdebug.h
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QTabWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qgroupbox.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QHBoxLayout

@@ -14,7 +14,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <QTextEdit> // Include for QTextEdit
+#include <QTextEdit> 
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -27,7 +27,7 @@ private slots:
     void setupUI();
     void authenticate();
     void fetchCurrencies();
-    void placeOrder();
+    void placeOrder(const QString &instrumentName, int amount, const QString &orderType);  // Update this declaration
     void subscribeToPriceStream(const QString &currency);
     void handleWebSocketMessage(const QString &message);
 
@@ -38,7 +38,7 @@ private:
     QString authToken;
     QUrl wsUrl;
     QTimer *reconnectTimer;
-
+    
     QLabel *priceLabel;
     QLineEdit *instrumentNameInput;
     QSpinBox *amountInput;
