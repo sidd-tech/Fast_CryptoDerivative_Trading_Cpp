@@ -9,8 +9,12 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
-
-
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QComboBox>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QTextEdit> // Include for QTextEdit
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -24,19 +28,24 @@ private slots:
     void authenticate();
     void fetchCurrencies();
     void placeOrder();
-    //void getOpenOrders();
-    //void cancelOrder(const QString &orderId);
     void subscribeToPriceStream(const QString &currency);
     void handleWebSocketMessage(const QString &message);
 
 private:
-
+    void appendToApiResponseTextEdit(const QString &response); // Add this line
     QNetworkAccessManager *networkManager;
     QWebSocket *webSocket;
     QString authToken;
     QUrl wsUrl;
     QTimer *reconnectTimer;
-    QLabel *priceLabel;  // To display price updates
+
+    QLabel *priceLabel;
+    QLineEdit *instrumentNameInput;
+    QSpinBox *amountInput;
+    QComboBox *orderTypeComboBox;
+    QPushButton *placeOrderButton;
+    QPushButton *fetchCurrenciesButton;
+    QTextEdit *apiResponseTextEdit; // Text area for API responses
 };
 
 #endif // MAINWINDOW_H
