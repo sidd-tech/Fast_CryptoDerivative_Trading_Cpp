@@ -29,6 +29,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void setupUI();
     void authenticate();
@@ -40,7 +41,8 @@ private slots:
     void cancelSelectedOrder();  // Declaration for canceling selected order
     void fetchPositions();
     void closeSelectedPosition();
-    
+    void getOrderBookForInstrument(const QString &instrumentName);
+
     
 
 private:
@@ -51,6 +53,7 @@ private:
     QUrl wsUrl;
     QTimer *reconnectTimer;
     QComboBox *instrumentNameComboBox;
+    QComboBox *orderBookInstrumentNameComboBox;
     QLabel *priceLabel;
     QLineEdit *instrumentNameInput;
     QSpinBox *amountInput;
@@ -63,7 +66,11 @@ private:
     QPushButton *cancelOrderButton;
     QTableWidget *positionsTable; // Declare positionsTable as a member variable
     
-
+    QLabel *bestAskLabel;
+    QLabel *bestBidLabel;
+    QLabel *indexPriceLabel;
+    QLabel *lastPriceLabel;
+    QTableWidget *orderBookTable;
 
 
 };

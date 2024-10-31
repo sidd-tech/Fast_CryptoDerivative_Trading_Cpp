@@ -54,7 +54,8 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "fetchOrders",
     "cancelSelectedOrder",
     "fetchPositions",
-    "closeSelectedPosition"
+    "closeSelectedPosition",
+    "getOrderBookForInstrument"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -67,7 +68,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,16 +76,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   74,    2, 0x08,    1 /* Private */,
-       3,    0,   75,    2, 0x08,    2 /* Private */,
-       4,    0,   76,    2, 0x08,    3 /* Private */,
-       5,    4,   77,    2, 0x08,    4 /* Private */,
-      10,    1,   86,    2, 0x08,    9 /* Private */,
-      12,    1,   89,    2, 0x08,   11 /* Private */,
-      14,    0,   92,    2, 0x08,   13 /* Private */,
-      15,    0,   93,    2, 0x08,   14 /* Private */,
-      16,    0,   94,    2, 0x08,   15 /* Private */,
-      17,    0,   95,    2, 0x08,   16 /* Private */,
+       1,    0,   80,    2, 0x08,    1 /* Private */,
+       3,    0,   81,    2, 0x08,    2 /* Private */,
+       4,    0,   82,    2, 0x08,    3 /* Private */,
+       5,    4,   83,    2, 0x08,    4 /* Private */,
+      10,    1,   92,    2, 0x08,    9 /* Private */,
+      12,    1,   95,    2, 0x08,   11 /* Private */,
+      14,    0,   98,    2, 0x08,   13 /* Private */,
+      15,    0,   99,    2, 0x08,   14 /* Private */,
+      16,    0,  100,    2, 0x08,   15 /* Private */,
+      17,    0,  101,    2, 0x08,   16 /* Private */,
+      18,    1,  102,    2, 0x08,   17 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -97,6 +99,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    6,
 
        0        // eod
 };
@@ -135,7 +138,10 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'fetchPositions'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'closeSelectedPosition'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'getOrderBookForInstrument'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
     >,
     nullptr
 } };
@@ -156,6 +162,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->cancelSelectedOrder(); break;
         case 8: _t->fetchPositions(); break;
         case 9: _t->closeSelectedPosition(); break;
+        case 10: _t->getOrderBookForInstrument((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -180,13 +187,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

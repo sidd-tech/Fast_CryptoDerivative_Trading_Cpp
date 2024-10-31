@@ -43,7 +43,6 @@ MainWindow::~MainWindow() {
 void MainWindow::setupUI() {
     // Create main layout with tab widget
     QTabWidget *tabWidget = new QTabWidget(this);
-
     // Place Order Tab
     QWidget *placeOrderTab = new QWidget(this);
     QVBoxLayout *placeOrderLayout = new QVBoxLayout(placeOrderTab);
@@ -119,8 +118,60 @@ void MainWindow::setupUI() {
     // Order Book Tab
     QWidget *orderBookTab = new QWidget(this);
     QVBoxLayout *orderBookLayout = new QVBoxLayout(orderBookTab);
-    orderBookLayout->addWidget(new QLabel("Order Book will be shown here."));
+
+    // Combo box for selecting an instrument
+    orderBookInstrumentNameComboBox = new QComboBox(this);
+    orderBookLayout->addWidget(new QLabel("Instrument Name"));
+    orderBookLayout->addWidget(orderBookInstrumentNameComboBox);
+
+    // Button to fetch instruments
+    QPushButton *fetchInstrumentsButton = new QPushButton("Get Instruments", this);
+    orderBookLayout->addWidget(fetchInstrumentsButton);
+
+    // Button to get the order book
+    QPushButton *getOrderBookButton = new QPushButton("Get Orderbook", this);
+    orderBookLayout->addWidget(getOrderBookButton);
+
+    // Labels for displaying order book information
+    bestAskLabel = new QLabel("Best Ask: ", this);
+    bestBidLabel = new QLabel("Best Bid: ", this);
+    indexPriceLabel = new QLabel("Index Price: ", this);
+    lastPriceLabel = new QLabel("Last Price: ", this);
+    orderBookLayout->addWidget(bestAskLabel);
+    orderBookLayout->addWidget(bestBidLabel);
+    orderBookLayout->addWidget(indexPriceLabel);
+    orderBookLayout->addWidget(lastPriceLabel);
+
+    // Table widget for displaying the order book entries
+    orderBookTable = new QTableWidget(this);
+    orderBookTable->setColumnCount(2);
+    orderBookTable->setHorizontalHeaderLabels(QStringList() << "Price" << "Amount");
+    orderBookLayout->addWidget(orderBookTable);
+
+    // Set the single layout for the orderBookTab
+    orderBookTab->setLayout(orderBookLayout);
     tabWidget->addTab(orderBookTab, "Order Book");
+
+    // Connect fetchInstrumentsButton to fetchCurrencies
+    connect(fetchInstrumentsButton, &QPushButton::clicked, this, [=]() {
+        fetchCurrencies(); // Call the fetchCurrencies function to populate the combo box
+    });
+
+    // Connect getOrderBookButton to the appropriate slot
+    connect(getOrderBookButton, &QPushButton::clicked, this, [=]() {
+        QString selectedInstrument = orderBookInstrumentNameComboBox->currentText();
+        if (selectedInstrument.isEmpty()) {
+            appendToApiResponseTextEdit("Please select an instrument.");
+            return;
+        }
+
+        // Get the order book for the selected instrument
+        getOrderBookForInstrument(selectedInstrument);
+    });
+
+
+        
+
 
     // Subscribe Tab
     QWidget *subscribeTab = new QWidget(this);
@@ -199,17 +250,25 @@ void MainWindow::fetchCurrencies() {
         QJsonArray instruments = response["result"].toArray();
 
         instrumentNameComboBox->clear();  // Clear any existing items
+        orderBookInstrumentNameComboBox->clear();  // Clear any existing items
+
+        QStringList instrumentNames;  // Create a QStringList to collect instrument names
 
         for (const QJsonValue &instrument : instruments) {
             QString instrumentName = instrument.toString();  // Directly get the string value
-            instrumentNameComboBox->addItem(instrumentName);  // Add to dropdown
+            instrumentNames << instrumentName;  // Append to QStringList
         }
+
+        // Add all instruments to both combo boxes
+        instrumentNameComboBox->addItems(instrumentNames);
+        orderBookInstrumentNameComboBox->addItems(instrumentNames);
 
         // Log the response for debugging
         appendToApiResponseTextEdit(QJsonDocument(response).toJson(QJsonDocument::Indented));
         reply->deleteLater();
     });
 }
+
 
 
 
@@ -419,6 +478,67 @@ void MainWindow::closeSelectedPosition() {
             fetchPositions(); // Refresh positions
         }
 
+        reply->deleteLater();
+    });
+}
+
+void MainWindow::getOrderBookForInstrument(const QString &instrumentName) {
+    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/public/get_order_book?instrument_name=" + instrumentName.toUpper()));
+    QNetworkReply *reply = networkManager->get(request);
+
+    connect(reply, &QNetworkReply::finished, this, [=]() {
+        // Parse the JSON response
+        QJsonObject response = QJsonDocument::fromJson(reply->readAll()).object();
+        QJsonObject result = response["result"].toObject();
+
+        // Update the labels with best ask, best bid, index price, and last price
+        double bestAskPrice = result["best_ask_price"].toDouble();
+        double bestBidPrice = result["best_bid_price"].toDouble();
+        double indexPrice = result["index_price"].toDouble();
+        double lastPrice = result["last_price"].toDouble();
+
+        bestAskLabel->setText("Best Ask: " + QString::number(bestAskPrice));
+        bestBidLabel->setText("Best Bid: " + QString::number(bestBidPrice));
+        indexPriceLabel->setText("Index Price: " + QString::number(indexPrice));
+        lastPriceLabel->setText("Last Price: " + QString::number(lastPrice));
+
+        // Clear any existing rows in the table
+        orderBookTable->clearContents();
+        orderBookTable->setRowCount(0);
+
+        // Populate the order book table with asks and bids
+        QJsonArray asks = result["asks"].toArray();
+        QJsonArray bids = result["bids"].toArray();
+
+        // Set the row count for asks and bids
+        int rowCount = asks.size() + bids.size();
+        orderBookTable->setRowCount(rowCount);
+
+        // Fill the table with ask orders
+        int row = 0;
+        for (const QJsonValue &ask : asks) {
+            QJsonArray askData = ask.toArray();
+            double price = askData[0].toDouble();
+            double amount = askData[1].toDouble();
+
+            orderBookTable->setItem(row, 0, new QTableWidgetItem(QString::number(price)));
+            orderBookTable->setItem(row, 1, new QTableWidgetItem(QString::number(amount)));
+            row++;
+        }
+
+        // Fill the table with bid orders
+        for (const QJsonValue &bid : bids) {
+            QJsonArray bidData = bid.toArray();
+            double price = bidData[0].toDouble();
+            double amount = bidData[1].toDouble();
+
+            orderBookTable->setItem(row, 0, new QTableWidgetItem(QString::number(price)));
+            orderBookTable->setItem(row, 1, new QTableWidgetItem(QString::number(amount)));
+            row++;
+        }
+
+        // Log the response for debugging
+        appendToApiResponseTextEdit(QJsonDocument(response).toJson(QJsonDocument::Indented));
         reply->deleteLater();
     });
 }
