@@ -1054,6 +1054,7 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qhashfunctions.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiodevice.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiodevicebase.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qitemselectionmodel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiterable.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiterator.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qjsondocument.h \
@@ -1195,15 +1196,19 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWebSockets.framework/Versions/A/Headers/qwebsocketprotocol.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWebSockets.framework/Versions/A/Headers/qwebsockets_global.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QSpinBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QTableWidget \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QTextEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QVBoxLayout \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemdelegate.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemview.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractslider.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractspinbox.h \
@@ -1211,6 +1216,7 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qcombobox.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qgridlayout.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qheaderview.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h \
@@ -1224,6 +1230,8 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qstyle.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qstyleoption.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtabbar.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtableview.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtablewidget.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtextedit.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
@@ -1694,6 +1702,10 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtextedit.h:
 
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtablewidget.h:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtableview.h:
+
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtabbar.h:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qstyleoption.h:
@@ -1716,6 +1728,8 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractslider.h:
 
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemview.h:
+
 /opt/homebrew/lib/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemdelegate.h:
@@ -1731,6 +1745,8 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWebSockets.framework/Versions/A/Headers/qwebsockets_global.h:
 
@@ -2044,6 +2060,8 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
 
 /opt/homebrew/Cellar/cmake/3.30.5/share/cmake/Modules/CheckLibraryExists.cmake:
 
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QTableWidget:
+
 /opt/homebrew/Cellar/cmake/3.30.5/share/cmake/Modules/CMakeTestCompilerCommon.cmake:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qconfig.h:
@@ -2235,6 +2253,8 @@ CMakeFiles/3.30.5/CMakeCXXCompiler.cmake:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_once_t.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_mutex_t.h:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qheaderview.h:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qhostaddress.h:
 
@@ -3374,6 +3394,8 @@ MyQtApp_autogen/moc_predefs.h:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtGui.framework/Versions/A/Headers/qregion.h:
 
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qitemselectionmodel.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/initializer_list:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/ranges_move_backward.h:
@@ -3459,6 +3481,8 @@ MyQtApp_autogen/moc_predefs.h:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year.h:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView:
 
 /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qoverload.h:
 

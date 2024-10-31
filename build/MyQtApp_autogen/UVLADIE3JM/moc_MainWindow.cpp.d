@@ -953,6 +953,7 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qhashfunctions.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiodevice.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiodevicebase.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qitemselectionmodel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiterable.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qiterator.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtCore.framework/Versions/A/Headers/qjsondocument.h \
@@ -1094,15 +1095,19 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWebSockets.framework/Versions/A/Headers/qwebsocketprotocol.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWebSockets.framework/Versions/A/Headers/qwebsockets_global.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QSpinBox \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QTableWidget \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QTextEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QVBoxLayout \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemdelegate.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemview.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractslider.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qabstractspinbox.h \
@@ -1110,6 +1115,7 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qcombobox.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qgridlayout.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qheaderview.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h \
@@ -1123,6 +1129,8 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qstyle.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qstyleoption.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtabbar.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtableview.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtablewidget.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtextedit.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \

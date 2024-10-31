@@ -1223,4 +1223,12 @@ CMakeFiles/MyQtApp.dir/src/main.cpp.o: \
   /opt/homebrew/include/QtWidgets/qgridlayout.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QTextEdit \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qtextedit.h \
-  /opt/homebrew/include/QtWidgets/qabstractscrollarea.h
+  /opt/homebrew/include/QtWidgets/qabstractscrollarea.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QTableWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtablewidget.h \
+  /opt/homebrew/include/QtWidgets/qtableview.h \
+  /opt/homebrew/include/QtWidgets/qabstractitemview.h \
+  /opt/homebrew/include/QtCore/qitemselectionmodel.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QHeaderView \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QDoubleSpinBox

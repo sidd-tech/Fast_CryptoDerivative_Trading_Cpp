@@ -14,7 +14,11 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <QTextEdit> 
+#include <QTextEdit>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QDoubleSpinBox>
+
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -27,9 +31,12 @@ private slots:
     void setupUI();
     void authenticate();
     void fetchCurrencies();
-    void placeOrder(const QString &instrumentName, int amount, const QString &orderType);  // Update this declaration
+    void placeOrder(const QString &instrumentName, int amount, const QString &orderType,double price); // With price
     void subscribeToPriceStream(const QString &currency);
     void handleWebSocketMessage(const QString &message);
+    void fetchOrders();  // Declaration for fetching orders
+    void cancelSelectedOrder();  // Declaration for canceling selected order
+    
 
 private:
     void appendToApiResponseTextEdit(const QString &response); // Add this line
@@ -38,14 +45,19 @@ private:
     QString authToken;
     QUrl wsUrl;
     QTimer *reconnectTimer;
-    
+    QComboBox *instrumentNameComboBox;
     QLabel *priceLabel;
     QLineEdit *instrumentNameInput;
     QSpinBox *amountInput;
     QComboBox *orderTypeComboBox;
     QPushButton *placeOrderButton;
     QPushButton *fetchCurrenciesButton;
+    QComboBox *orderSelectionComboBox;  // Define it here
     QTextEdit *apiResponseTextEdit; // Text area for API responses
+    QTableWidget *orderTable;
+    QPushButton *cancelOrderButton;
+
+
 };
 
 #endif // MAINWINDOW_H
