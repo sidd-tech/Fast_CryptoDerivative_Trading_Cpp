@@ -2,6 +2,7 @@
 #include <QJsonArray>
 #include <QVBoxLayout>
 #include <QTabWidget>
+#include <QTableWidget>
 #include <QGroupBox>
 #include <QLabel>
 #include <QTextEdit>
@@ -11,6 +12,7 @@
 #include <QSpinBox>
 #include <QHBoxLayout>
 #include <QTableWidget>
+#include <QMessageBox>
 #include <QDoubleSpinBox>
 
 
@@ -92,8 +94,27 @@ void MainWindow::setupUI() {
     // My Positions Tab
     QWidget *myPositionsTab = new QWidget(this);
     QVBoxLayout *myPositionsLayout = new QVBoxLayout(myPositionsTab);
-    myPositionsLayout->addWidget(new QLabel("Positions will be shown here."));
+
+    // Create a table view for displaying positions
+    positionsTable = new QTableWidget(myPositionsTab);
+    positionsTable->setColumnCount(6); // Adjust the number of columns based on the data
+    positionsTable->setHorizontalHeaderLabels({"Instrument Name", "Size", "Mark Price", "Direction", "Kind", "Total P&L"});
+
+    // Button to fetch positions
+    QPushButton *fetchPositionsButton = new QPushButton("Fetch Positions", myPositionsTab);
+    myPositionsLayout->addWidget(fetchPositionsButton);
+    myPositionsLayout->addWidget(positionsTable);
+
+    // Button to close position
+    QPushButton *closePositionButton = new QPushButton("Close Selected Position", myPositionsTab);
+    myPositionsLayout->addWidget(closePositionButton);
+
     tabWidget->addTab(myPositionsTab, "My Positions");
+
+    // Connect button signals to the respective slots
+    connect(fetchPositionsButton, &QPushButton::clicked, this, &MainWindow::fetchPositions);
+    connect(closePositionButton, &QPushButton::clicked, this, &MainWindow::closeSelectedPosition);
+
 
     // Order Book Tab
     QWidget *orderBookTab = new QWidget(this);
@@ -317,3 +338,90 @@ void MainWindow::cancelSelectedOrder() {
         reply->deleteLater();
     });
 }
+
+void MainWindow::fetchPositions() {
+    if (authToken.isEmpty()) authenticate(); // Ensure the user is authenticated
+
+    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/private/get_positions?currency=any"));
+    request.setRawHeader("Authorization", "Bearer " + authToken.toUtf8());
+
+    QNetworkReply *reply = networkManager->get(request); // Use networkManager for consistency
+    connect(reply, &QNetworkReply::finished, this, [=] {
+        QByteArray responseData = reply->readAll();
+        QJsonObject response = QJsonDocument::fromJson(responseData).object();
+
+
+
+        // Check for errors in the response
+        if (response.contains("error")) {
+            appendToApiResponseTextEdit("Error fetching positions: " + QJsonDocument(response).toJson(QJsonDocument::Compact));
+        } else {
+            QJsonArray positions = response["result"].toArray();
+            // Clear previous data
+            positionsTable->setRowCount(0);
+             // Populate the table with positions
+            for (const QJsonValue &value : positions) {
+                QJsonObject position = value.toObject();
+                int row = positionsTable->rowCount();
+                positionsTable->insertRow(row);
+
+                // Populate the table with relevant data
+                positionsTable->setItem(row, 0, new QTableWidgetItem(position["instrument_name"].toString()));
+                positionsTable->setItem(row, 1, new QTableWidgetItem(QString::number(position["size"].toDouble())));
+                positionsTable->setItem(row, 4, new QTableWidgetItem(QString::number(position["mark_price"].toDouble())));
+                positionsTable->setItem(row, 3, new QTableWidgetItem(position["direction"].toString()));
+                positionsTable->setItem(row, 2, new QTableWidgetItem(position["kind"].toString()));
+                positionsTable->setItem(row, 7, new QTableWidgetItem(QString::number(position["total_profit_loss"].toDouble())));
+                // Add other fields as needed
+            }
+            appendToApiResponseTextEdit("Positions fetched successfully."+ QJsonDocument(response).toJson(QJsonDocument::Compact));
+        }
+        reply->deleteLater();
+    });
+}
+
+void MainWindow::closeSelectedPosition() {
+    int row = positionsTable->currentRow();
+    if (row < 0) {
+        QMessageBox::warning(this, "Warning", "Please select a position to close.");
+        return;
+    }
+
+    QString instrumentName = positionsTable->item(row, 0)->text();
+
+    // Ensure the user is authenticated
+    if (authToken.isEmpty()) authenticate(); 
+
+    // Make the API call to close the position
+    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/private/close_position"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("Authorization", "Bearer " + authToken.toUtf8());
+
+    QJsonObject params;
+    params["instrument_name"] = instrumentName;
+
+    QJsonObject body;
+    body["jsonrpc"] = "2.0";
+    body["id"] = 11; // Unique request ID
+    body["method"] = "private/close_position"; // Correct method
+    body["params"] = params;
+
+    QNetworkReply *reply = networkManager->post(request, QJsonDocument(body).toJson());
+    connect(reply, &QNetworkReply::finished, this, [=] {
+        QByteArray responseData = reply->readAll();
+        QJsonObject response = QJsonDocument::fromJson(responseData).object();
+
+        // Check for errors in the response
+        if (response.contains("error")) {
+            appendToApiResponseTextEdit("Error closing position: " + QJsonDocument(response).toJson(QJsonDocument::Compact));
+        } else {
+            appendToApiResponseTextEdit("Position closed successfully: " + QJsonDocument(response).toJson(QJsonDocument::Compact));
+            fetchPositions(); // Refresh positions
+        }
+
+        reply->deleteLater();
+    });
+}
+
+
+

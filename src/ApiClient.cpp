@@ -1,93 +1,52 @@
 #include "ApiClient.h"
-#include <QJsonDocument>
+#include <QNetworkRequest>
 #include <QJsonObject>
-#include <QDebug>
-#include <QJsonArray>
+#include <QJsonDocument>
 
-ApiClient::ApiClient(QObject *parent) : QObject(parent) {
-    networkManager = new QNetworkAccessManager(this);
-}
+ApiClient::ApiClient(QObject *parent) : QObject(parent), networkManager(new QNetworkAccessManager(this)) {}
 
-void ApiClient::authenticate() {
-    QJsonObject authParams{
-        {"grant_type", "client_credentials"},
-        {"client_id", "s4seCFEb"},
-        {"client_secret", "FFUjOLq7dO-IOeBQex4rjLSrfCMQvl5c9FmcR05aM3s"}
-    };
-
-    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/public/auth"));
+void ApiClient::authenticate(const QString &apiKey, const QString &secret) {
+    QNetworkRequest request(QUrl("https://example.com/auth"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    QNetworkReply *reply = networkManager->post(request, QJsonDocument(authParams).toJson());
-    connect(reply, &QNetworkReply::finished, this, &ApiClient::onAuthenticationReply);
+    QJsonObject json;
+    json["api_key"] = apiKey;
+    json["secret"] = secret;
+
+    QJsonDocument doc(json);
+    networkManager->post(request, doc.toJson());
 }
 
-void ApiClient::placeOrder(const QString &instrument, int amount, const QString &orderType) {
-    QJsonObject orderParams{
-        {"instrument_name", instrument},
-        {"amount", amount},
-        {"type", orderType}
-    };
+void ApiClient::fetchCurrencies() {
+    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/public/get_supported_index_names?type=all"));
+    networkManager->get(request);
+}
 
-    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/private/placeorder"));
+void ApiClient::placeOrder(const QString &instrument, const QString &orderType, double amount) {
+    QNetworkRequest request(QUrl("https://example.com/place_order"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    QNetworkReply *reply = networkManager->post(request, QJsonDocument(orderParams).toJson());
-    connect(reply, &QNetworkReply::finished, this, &ApiClient::onPlaceOrderReply);
+    QJsonObject json;
+    json["instrument"] = instrument;
+    json["order_type"] = orderType;
+    json["amount"] = amount;
+
+    QJsonDocument doc(json);
+    networkManager->post(request, doc.toJson());
 }
 
-void ApiClient::fetchOrderBook(const QString &currency) {
-    QNetworkRequest request(QUrl(QString("https://test.deribit.com/api/v2/public/get_orderbook?instrument_name=%1").arg(currency)));
-    QNetworkReply *reply = networkManager->get(request);
-    connect(reply, &QNetworkReply::finished, this, &ApiClient::onFetchOrderBookReply);
+void ApiClient::fetchOrders() {
+    QNetworkRequest request(QUrl("https://example.com/fetch_orders"));
+    networkManager->get(request);
 }
 
-void ApiClient::cancelOrder(int orderId) {
-    QJsonObject cancelParams{
-        {"order_id", orderId}
-    };
-
-    QNetworkRequest request(QUrl("https://test.deribit.com/api/v2/private/cancelorder"));
+void ApiClient::cancelOrder(const QString &orderId) {
+    QNetworkRequest request(QUrl("https://example.com/cancel_order"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    QNetworkReply *reply = networkManager->post(request, QJsonDocument(cancelParams).toJson());
-    connect(reply, &QNetworkReply::finished, this, &ApiClient::onCancelOrderReply);
-}
+    QJsonObject json;
+    json["order_id"] = orderId;
 
-void ApiClient::onAuthenticationReply(QNetworkReply *reply) {
-    if (reply->error() == QNetworkReply::NoError) {
-        QByteArray response = reply->readAll();
-        qDebug() << "Authentication Success:" << QJsonDocument::fromJson(response).toJson();
-    } else {
-        qDebug() << "Authentication Error:" << reply->errorString();
-    }
-    reply->deleteLater();
-}
-
-void ApiClient::onPlaceOrderReply(QNetworkReply *reply) {
-    if (reply->error() == QNetworkReply::NoError) {
-        qDebug() << "Order Placed:" << QJsonDocument::fromJson(reply->readAll()).toJson();
-    } else {
-        qDebug() << "Place Order Error:" << reply->errorString();
-    }
-    reply->deleteLater();
-}
-
-void ApiClient::onFetchOrderBookReply(QNetworkReply *reply) {
-    if (reply->error() == QNetworkReply::NoError) {
-        // Handle order book parsing and data output as needed
-        qDebug() << "Order Book Fetched:" << reply->readAll();
-    } else {
-        qDebug() << "Fetch Order Book Error:" << reply->errorString();
-    }
-    reply->deleteLater();
-}
-
-void ApiClient::onCancelOrderReply(QNetworkReply *reply) {
-    if (reply->error() == QNetworkReply::NoError) {
-        qDebug() << "Order Canceled:" << QJsonDocument::fromJson(reply->readAll()).toJson();
-    } else {
-        qDebug() << "Cancel Order Error:" << reply->errorString();
-    }
-    reply->deleteLater();
+    QJsonDocument doc(json);
+    networkManager->post(request, doc.toJson());
 }

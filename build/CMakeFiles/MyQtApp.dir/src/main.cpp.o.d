@@ -1231,4 +1231,8 @@ CMakeFiles/MyQtApp.dir/src/main.cpp.o: \
   /opt/homebrew/include/QtCore/qitemselectionmodel.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QHeaderView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QDoubleSpinBox
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QDoubleSpinBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+  /opt/homebrew/include/QtWidgets/qdialog.h \
+  /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h

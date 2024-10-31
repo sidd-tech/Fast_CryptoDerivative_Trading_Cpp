@@ -18,6 +18,8 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QDoubleSpinBox>
+#include <QMessageBox> // Include this line
+
 
 
 class MainWindow : public QMainWindow {
@@ -36,6 +38,9 @@ private slots:
     void handleWebSocketMessage(const QString &message);
     void fetchOrders();  // Declaration for fetching orders
     void cancelSelectedOrder();  // Declaration for canceling selected order
+    void fetchPositions();
+    void closeSelectedPosition();
+    
     
 
 private:
@@ -56,6 +61,9 @@ private:
     QTextEdit *apiResponseTextEdit; // Text area for API responses
     QTableWidget *orderTable;
     QPushButton *cancelOrderButton;
+    QTableWidget *positionsTable; // Declare positionsTable as a member variable
+    
+
 
 
 };

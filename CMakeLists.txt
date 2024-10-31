@@ -13,7 +13,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets WebSockets)
 
 set(CMAKE_AUTOMOC ON)  # Automatically run moc for headers with Q_OBJECT
 
-add_executable(MyQtApp src/main.cpp src/MainWindow.cpp src/MainWindow.h)
+add_executable(MyQtApp src/main.cpp src/MainWindow.cpp src/MainWindow.h ) #src/ApiClient.cpp src/ApiClient.h src/WebSocketClient.cpp src/WebSocketClient.h)
 
 # Link Qt libraries to the project
 target_link_libraries(MyQtApp PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::WebSockets)

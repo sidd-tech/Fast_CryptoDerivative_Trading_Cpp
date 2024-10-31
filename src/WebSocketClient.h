@@ -2,24 +2,19 @@
 #define WEBSOCKETCLIENT_H
 
 #include <QObject>
-#include <QWebSocket>
-#include <QWebSocketServer>
 
 class WebSocketClient : public QObject {
     Q_OBJECT
 
 public:
     explicit WebSocketClient(QObject *parent = nullptr);
-    void subscribeToPrices(const QString &currency);
+    void connectToWebSocket();
 
 signals:
-    void priceUpdated(const QString &currency, double price);
-
-private slots:
-    void onMessageReceived(const QString &message);
+    void dataReceived(const QString &data); // Signal for receiving data
 
 private:
-    QWebSocket *webSocket;
+    // Add any necessary private members here
 };
 
 #endif // WEBSOCKETCLIENT_H

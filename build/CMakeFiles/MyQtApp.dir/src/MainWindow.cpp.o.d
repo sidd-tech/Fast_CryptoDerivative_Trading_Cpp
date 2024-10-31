@@ -1220,6 +1220,10 @@ CMakeFiles/MyQtApp.dir/src/MainWindow.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QHeaderView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QDoubleSpinBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+  /opt/homebrew/include/QtWidgets/qdialog.h \
+  /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h \
   /opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
   /opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QTabWidget \
