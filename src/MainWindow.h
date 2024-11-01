@@ -18,9 +18,11 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QDoubleSpinBox>
-#include <QMessageBox> // Include this line
-
-
+#include <QMessageBox>
+#include <QtWebSockets/QWebSocket>
+#include <QSslConfiguration>  // For SSL configuration with WebSocket
+#include <QSslSocket>         // For disabling SSL verification if needed
+#include <QLCDNumber>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -29,24 +31,22 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
 private slots:
     void setupUI();
     void authenticate();
     void fetchCurrencies();
-    void placeOrder(const QString &instrumentName, int amount, const QString &orderType,double price); // With price
-    void subscribeToPriceStream(const QString &currency);
+    void placeOrder(const QString &instrumentName, int amount, const QString &orderType, double price);
+    void subscribeToPriceStream(const QString &currency);  // WebSocket subscription function
     void handleWebSocketMessage(const QString &message);
-    void fetchOrders();  // Declaration for fetching orders
-    void cancelSelectedOrder();  // Declaration for canceling selected order
+    void fetchOrders();
+    void cancelSelectedOrder();
     void fetchPositions();
     void closeSelectedPosition();
     void getOrderBookForInstrument(const QString &instrumentName);
-
-    
+    void onWebSocketMessageReceived(QString message);
 
 private:
-    void appendToApiResponseTextEdit(const QString &response); // Add this line
+    void appendToApiResponseTextEdit(const QString &response);
     QNetworkAccessManager *networkManager;
     QWebSocket *webSocket;
     QString authToken;
@@ -54,25 +54,24 @@ private:
     QTimer *reconnectTimer;
     QComboBox *instrumentNameComboBox;
     QComboBox *orderBookInstrumentNameComboBox;
+    QComboBox *subscribeInstrumentComboBox;  // Add combo box for Subscribe tab
     QLabel *priceLabel;
     QLineEdit *instrumentNameInput;
     QSpinBox *amountInput;
     QComboBox *orderTypeComboBox;
     QPushButton *placeOrderButton;
     QPushButton *fetchCurrenciesButton;
-    QComboBox *orderSelectionComboBox;  // Define it here
-    QTextEdit *apiResponseTextEdit; // Text area for API responses
+    QComboBox *orderSelectionComboBox;
+    QTextEdit *apiResponseTextEdit;
     QTableWidget *orderTable;
     QPushButton *cancelOrderButton;
-    QTableWidget *positionsTable; // Declare positionsTable as a member variable
-    
+    QTableWidget *positionsTable;
     QLabel *bestAskLabel;
     QLabel *bestBidLabel;
     QLabel *indexPriceLabel;
     QLabel *lastPriceLabel;
     QTableWidget *orderBookTable;
-
-
+    QLCDNumber *priceDisplay;
 };
 
 #endif // MAINWINDOW_H

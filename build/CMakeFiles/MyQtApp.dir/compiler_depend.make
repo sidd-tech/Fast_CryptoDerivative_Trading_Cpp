@@ -1174,6 +1174,7 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslConfiguration \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslError \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslPreSharedKeyAuthenticator \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslSocket \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qabstractsocket.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qhostaddress.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkaccessmanager.h \
@@ -1198,6 +1199,7 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLCDNumber \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
@@ -1223,6 +1225,7 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlcdnumber.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmessagebox.h \
@@ -2031,6 +2034,8 @@ MyQtApp_autogen/timestamp: /Applications/Xcode.app/Contents/Developer/Platforms/
 /opt/homebrew/Cellar/cmake/3.30.5/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake:
 
 /opt/homebrew/Cellar/cmake/3.30.5/share/cmake/Modules/Compiler/OrangeC-DetermineCompiler.cmake:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLCDNumber:
 
 /opt/homebrew/Cellar/cmake/3.30.5/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake:
 
@@ -3584,6 +3589,8 @@ MyQtApp_autogen/moc_predefs.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_floor.h:
 
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlcdnumber.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocate_at_least.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h:
@@ -4363,6 +4370,8 @@ CMakeFiles/3.30.5/CMakeSystem.cmake:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/relation.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/is_heap.h:
+
+/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslSocket:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h:
 

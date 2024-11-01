@@ -1235,4 +1235,10 @@ CMakeFiles/MyQtApp.dir/src/main.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
   /opt/homebrew/include/QtWidgets/qdialog.h \
-  /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h
+  /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h \
+  /opt/homebrew/include/QtWebSockets/QWebSocket \
+  /opt/homebrew/lib/QtNetwork.framework/Headers/QSslConfiguration \
+  /opt/homebrew/lib/QtNetwork.framework/Headers/QSslSocket \
+  /opt/homebrew/lib/QtNetwork.framework/Headers/qsslsocket.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QLCDNumber \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qlcdnumber.h

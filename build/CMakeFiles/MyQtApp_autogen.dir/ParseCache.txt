@@ -1078,6 +1078,7 @@
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslConfiguration
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslError
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslPreSharedKeyAuthenticator
+ mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslSocket
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qabstractsocket.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qhostaddress.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkaccessmanager.h
@@ -1102,6 +1103,7 @@
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView
+ mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLCDNumber
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow
@@ -1127,6 +1129,7 @@
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h
+ mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlcdnumber.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h
  mdp:/opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmessagebox.h

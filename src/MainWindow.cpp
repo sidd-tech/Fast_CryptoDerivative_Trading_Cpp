@@ -14,6 +14,8 @@
 #include <QTableWidget>
 #include <QMessageBox>
 #include <QDoubleSpinBox>
+#include <QtWebSockets/QWebSocket>
+#include <QLCDNumber> 
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,17 +25,21 @@ MainWindow::MainWindow(QWidget *parent) :
     reconnectTimer(new QTimer(this))
 {
     setupUI();  // Set up the UI components
-    wsUrl = QUrl("wss://test.deribit.com/ws/api/v2");
 
-    authenticate();
+    wsUrl = QUrl("wss://test.deribit.com/ws/api/v2");  // WebSocket URL
+    authenticate();  // Initial authentication
 
-    // Setup WebSocket connection
-    connect(webSocket, &QWebSocket::connected, this, [=] {
-        qDebug() << "WebSocket connected!";
-    });
     connect(webSocket, &QWebSocket::textMessageReceived, this, &MainWindow::handleWebSocketMessage);
-    connect(reconnectTimer, &QTimer::timeout, this, &MainWindow::authenticate);
+
+
+    // Optionally connect to the error signal for debugging
+    connect(webSocket, &QWebSocket::errorOccurred, this, [](QAbstractSocket::SocketError error) {
+        qDebug() << "WebSocket error:" << error;
+    });
+
+    
 }
+
 
 MainWindow::~MainWindow() {
     delete networkManager;
@@ -172,12 +178,45 @@ void MainWindow::setupUI() {
 
         
 
-
+    
     // Subscribe Tab
     QWidget *subscribeTab = new QWidget(this);
     QVBoxLayout *subscribeLayout = new QVBoxLayout(subscribeTab);
-    subscribeLayout->addWidget(new QLabel("Subscription options will be shown here."));
+
+    // Button to fetch instruments
+    QPushButton *fetchInstrumentsButton2 = new QPushButton("Get Instruments", this);
+    orderBookLayout->addWidget(fetchInstrumentsButton2);
+
+    subscribeInstrumentComboBox = new QComboBox(this);
+    subscribeLayout->addWidget(new QLabel("Instrument Name"));
+    subscribeLayout->addWidget(subscribeInstrumentComboBox);
+
+    QPushButton *subscribeButton = new QPushButton("Subscribe", this);
+    subscribeLayout->addWidget(subscribeButton);
+
+    // Connect the button to the lambda
+    connect(subscribeButton, &QPushButton::clicked, this, [this]() {
+        QString selectedInstrument = subscribeInstrumentComboBox->currentText();
+        subscribeToPriceStream(selectedInstrument);
+    });
+
+    // Initialize QLCDNumber for displaying live price
+    priceDisplay = new QLCDNumber(this);
+    priceDisplay->setDigitCount(10);  // Adjust based on the expected price range
+    priceDisplay->setSegmentStyle(QLCDNumber::Flat);  
+
+    subscribeLayout->addWidget(fetchInstrumentsButton2);
+    subscribeLayout->addWidget(new QLabel("Instrument"));
+    subscribeLayout->addWidget(subscribeInstrumentComboBox);
+    subscribeLayout->addWidget(subscribeButton);
+    subscribeLayout->addWidget(new QLabel("Live Price:"));
+    subscribeLayout->addWidget(priceDisplay);
+
     tabWidget->addTab(subscribeTab, "Subscribe");
+
+    connect(fetchInstrumentsButton2, &QPushButton::clicked, this, &MainWindow::fetchCurrencies);
+
+
 
     // API Response Text Area
     QGroupBox *apiResponseGroup = new QGroupBox("API Response", this);
@@ -262,6 +301,7 @@ void MainWindow::fetchCurrencies() {
         // Add all instruments to both combo boxes
         instrumentNameComboBox->addItems(instrumentNames);
         orderBookInstrumentNameComboBox->addItems(instrumentNames);
+        subscribeInstrumentComboBox->addItems(instrumentNames);
 
         // Log the response for debugging
         appendToApiResponseTextEdit(QJsonDocument(response).toJson(QJsonDocument::Indented));
@@ -318,9 +358,10 @@ void MainWindow::handleWebSocketMessage(const QString &message) {
     QJsonObject response = QJsonDocument::fromJson(message.toUtf8()).object();
     if (response.contains("params")) {
         double price = response["params"].toObject()["data"].toObject()["price"].toDouble();
-        appendToApiResponseTextEdit("Price update: " + QString::number(price));
+        priceDisplay->display(price);  // Update QLCDNumber with the price
     }
 }
+
 
 void MainWindow::subscribeToPriceStream(const QString &currency) {
     if (!webSocket->isValid()) {
@@ -335,7 +376,7 @@ void MainWindow::subscribeToPriceStream(const QString &currency) {
     QJsonObject params;
     params["channels"] = QJsonArray({ QString("deribit_price_index.%1").arg(currency) });
     subscribeMessage["params"] = params;
-
+    appendToApiResponseTextEdit("Subscribing to Instrument :"+currency);
     webSocket->sendTextMessage(QJsonDocument(subscribeMessage).toJson(QJsonDocument::Compact));
 }
 
@@ -543,5 +584,12 @@ void MainWindow::getOrderBookForInstrument(const QString &instrumentName) {
     });
 }
 
+void MainWindow::onWebSocketMessageReceived(QString message) {
+    QJsonDocument doc = QJsonDocument::fromJson(message.toUtf8());
+    QJsonObject obj = doc.object();
 
-
+    if (obj.contains("params") && obj["params"].toObject().contains("data")) {
+        double price = obj["params"].toObject()["data"].toObject()["price"].toDouble();
+        priceLabel->setText(QString("Live Price: %1").arg(price));
+    }
+}

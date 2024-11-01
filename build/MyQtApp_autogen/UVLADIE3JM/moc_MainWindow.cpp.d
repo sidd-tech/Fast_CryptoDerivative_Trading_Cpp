@@ -1073,6 +1073,7 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslConfiguration \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslError \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslPreSharedKeyAuthenticator \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/QSslSocket \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qabstractsocket.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qhostaddress.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkaccessmanager.h \
@@ -1097,6 +1098,7 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QDoubleSpinBox \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLCDNumber \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
@@ -1122,6 +1124,7 @@
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlabel.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayout.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlayoutitem.h \
+  /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlcdnumber.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
   /opt/homebrew/Cellar/qt/6.7.2_1/lib/QtWidgets.framework/Versions/A/Headers/qmessagebox.h \
